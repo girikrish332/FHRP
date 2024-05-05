@@ -1,5 +1,7 @@
 FHRP Configuration README
+
 Overview
+
 This README provides guidance on configuring First Hop Redundancy Protocol (FHRP) using the Hot Standby Router Protocol (HSRP) on Cisco routers R1 and R2.
 Requirements
 Cisco routers (R1 and R2) with appropriate interfaces and connectivity established.
