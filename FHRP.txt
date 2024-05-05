@@ -14,7 +14,7 @@ no sh
 ex
 standby 1 preempt
 standby 1 ip 10.0.1.254
-standby 1 preempt
+standby 1 priority 100
 ex
 
 
@@ -32,5 +32,5 @@ no sh
 ex
 standby 1 preempt
 standby 1 ip 10.0.1.254
-standby 1 preempt
+standby 1 priority 200
 ex
