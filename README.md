@@ -1,54 +1,48 @@
-FHRP Configuration README
+# FHRP Configuration for Routers R1 and R2
 
-Overview
+## Overview
+This repository contains the configuration for implementing First Hop Redundancy Protocol (FHRP) on routers R1 and R2. FHRP provides high availability and fault tolerance for network devices by allowing multiple routers to share a virtual IP address.
 
-This README provides guidance on configuring First Hop Redundancy Protocol (FHRP) using the Hot Standby Router Protocol (HSRP) on Cisco routers R1 and R2.
-Requirements
-Cisco routers (R1 and R2) with appropriate interfaces and connectivity established.
-Basic understanding of Cisco IOS commands.
-Configuration Steps
-R1 Configuration
-Access router R1 through the command line interface.
-en
-conf t
+## Configuration Details
 
-Configure interface FastEthernet0/0 with an IP address and enable it.
- 
-int f0/0
-ip add 10.207.1.10 255.255.255.0
-no sh
-Set a default route.
+### R1 Configuration
+```plaintext
+interface FastEthernet0/0
+  ip address 10.207.1.10 255.255.255.0
+  no shutdown
+
+interface FastEthernet1/0
+  ip address 10.0.1.1 255.255.255.0
+  no shutdown
+
 ip route 0.0.0.0 0.0.0.0 10.207.1.1
-Configure interface FastEthernet1/0 with an IP address and enable it.
- 
-int f1/0
-ip add 10.0.1.1 255.255.255.0
-no sh
-Configure HSRP on interface FastEthernet1/0.
+
 standby 1 preempt
 standby 1 ip 10.0.1.254
+standby 1 priority 100
+interface FastEthernet0/0
+  ip address 10.207.1.20 255.255.255.0
+  no shutdown
 
-R2 Configuration
-Access router R2 through the command line interface.
-en
-conf t
-Configure interface FastEthernet0/0 with an IP address and enable it.
- 
-int f0/0
-ip add 10.207.1.20 255.255.255.0
-no sh
-Set a default route.
+interface FastEthernet1/0
+  ip address 10.0.1.2 255.255.255.0
+  no shutdown
+
 ip route 0.0.0.0 0.0.0.0 10.207.1.1
-Configure interface FastEthernet1/0 with an IP address and enable it.
- 
-int f1/0
-ip add 10.0.1.2 255.255.255.0
-no sh
-Configure HSRP on interface FastEthernet1/0.
+
 standby 1 preempt
 standby 1 ip 10.0.1.254
+standby 1 priority 200
+Usage
 
-Notes
-Ensure that the HSRP priority is appropriately set on each router to determine the active/standby role.
-Verify connectivity and failover behavior after configuring HSRP.
+To implement this configuration, copy the respective configurations to the CLI interface of routers R1 and R2, and ensure proper connectivity and redundancy in the network infrastructure.
+Contributing
 
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Usage
+
+To implement this configuration, copy the respective configurations to the CLI interface of routers R1 and R2, and ensure proper connectivity and redundancy in the network infrastructure.
+Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
