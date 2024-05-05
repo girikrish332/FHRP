@@ -24,6 +24,7 @@ interface FastEthernet0/0
   ip address 10.207.1.20 255.255.255.0
   no shutdown
 
+### R2 Configuration
 interface FastEthernet1/0
   ip address 10.0.1.2 255.255.255.0
   no shutdown
