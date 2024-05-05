@@ -1,0 +1,36 @@
+R1
+
+en
+conf t
+
+int f0/0
+ip add 10.207.1.10 255.255.255.0
+no sh
+ex
+ip route 0.0.0.0 0.0.0.0 10.207.1.1
+int f1/0
+ip add 10.0.1.1 255.255.255.0
+no sh
+ex
+standby 1 preempt
+standby 1 ip 10.0.1.254
+standby 1 preempt
+ex
+
+
+R2
+en
+conf t
+int f0/0
+ip add 10.207.1.20 255.255.255.0
+no sh
+ex
+ip route 0.0.0.0 0.0.0.0 10.207.1.1
+int f1/0
+ip add 10.0.1.2 255.255.255.0
+no sh
+ex
+standby 1 preempt
+standby 1 ip 10.0.1.254
+standby 1 preempt
+ex
