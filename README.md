@@ -5,8 +5,9 @@ This repository contains the configuration for implementing First Hop Redundancy
 
 ## Configuration Details
 
-### R1 Configuration
+### Router Configuration
 ```plaintext
+### R1 Configuration
 interface FastEthernet0/0
   ip address 10.207.1.10 255.255.255.0
   no shutdown
